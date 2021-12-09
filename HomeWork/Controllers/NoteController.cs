@@ -39,15 +39,16 @@ namespace HomeWork.Controllers
         [Authorize]
         public IActionResult Add(AddNoteViewModel data)
         {
+            
             CreateNote(data.Name, data.Description);
 
             return RedirectToAction("Index", "Home");
 
         }
 
-        public void CreateNote(string name, string description) //muszę wyciągnąć to w NoteService
+        public void CreateNote(string name, string description) 
         {
-            var userId = _userManager.GetUserId(User); //ta linijka działa - podaje userId=3, czyli właściwy użytkownik, typ string
+            var userId = _userManager.GetUserId(User);
             int.TryParse(userId, out int id);
             var user = _context.UsersCustom.Find(id);
 
@@ -58,7 +59,7 @@ namespace HomeWork.Controllers
                 CustomUser = user
             };
             _context.Notes.AddAsync(entity);
-            user.Notes.Add(entity);            
+            user.Notes.Add(entity);
             _context.SaveChanges();
         }
 

@@ -1,9 +1,13 @@
-﻿using HomeWork.Models.Entities;
-using Microsoft.AspNetCore.Identity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HomeWork.Models;
+using HomeWork.Models.Entities;
+using HomeWork.Models.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,18 +23,8 @@ namespace HomeWork.Models.Services
             _userManager = userManager;
             _context = context; 
         }
-
-        //public void CreateNote(string name, string description)
-        //{
-        //    var entity = new NoteEntity
-        //    {
-        //        Name = name,
-        //        Description = description
-        //    };
-        //    _context.Notes.AddAsync(entity);
-        //    _context.SaveChanges();
-        //}
-
+          
+              
 
         public EditNoteViewModel GetToEdit(int id)
         {
