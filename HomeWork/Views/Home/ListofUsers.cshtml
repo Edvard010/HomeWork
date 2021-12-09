@@ -1,0 +1,16 @@
+﻿@model HomeWork.Models.UsersListViewModel
+@{
+    ViewData["Title"] = "List of Users";
+}
+
+<div class="text-center">
+    <h1 class="display-4">List of Users</h1>    
+</div>
+
+@foreach (var user in Model.Users)
+{
+
+    <li class="list-group-item"><b>Imię:</b> @user.FirstName, <b>Nazwisko:</b> @user.LastName, <b>Login:</b> @user.Login</li>
+
+
+}

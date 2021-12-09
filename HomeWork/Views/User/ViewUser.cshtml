@@ -1,0 +1,29 @@
+﻿@model HomeWork.Models.ViewUserViewModel
+@{
+    ViewData["Title"] = "Dane Użytkownika";
+}
+<div class="text-center">
+    <h4 class="display-4">Dane Użytkownika</h4>
+</div>
+
+<ul class="list-group">
+    <li class="list-group-item">Imię: @Model.FirstName</li>
+    <li class="list-group-item">Nazwisko: @Model.LastName</li>
+    <li class="list-group-item">O sobie: @Model.AboutMe</li>
+</ul>
+<h5>Lista notatek Użytkownika:</h5>
+
+@foreach (var note in Model.Notes)
+{
+    <p>Tytuł:</p>
+    <li class="list-group-item">@note.Name</li>
+    <p>Treść</p>
+    <li class="list-group-item">@note.Description</li>
+    <a class="text-danger" asp-controller="Note" asp-action="Edit" asp-route-id="@note.Id">Edit Note</a><br />
+    <a class="text-danger" asp-controller="Note" asp-action="Remove" asp-route-id="@note.Id">Delete Note</a>
+    <br />
+}
+@if (Model.Notes.Capacity == 0)
+{
+    <a class="text-danger">Brak notatek użytkownia</a>
+}
